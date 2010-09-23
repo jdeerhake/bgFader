@@ -1,5 +1,5 @@
 /*
- * jQuery bgFader plugin v0.0.1, 2010-09-23
+ * jQuery bgFader plugin v0.1.0, 2010-09-23
  * Only tested with jQuery 1.4.1 (early versions - YMMV)
  * 
  *   http://jdeerhake.com/bgFader.php
