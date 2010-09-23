@@ -53,7 +53,7 @@ jQuery.fn.bgFader = function (userargs) {
 			break;
 			case 'in':
 				underlay.css({
-					"background" : args.newBg,
+					"background" : args.newBg
 				}).insertBefore(obj);
 			break;
 			case 'cross':
