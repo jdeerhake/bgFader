@@ -17,7 +17,8 @@ jQuery.fn.bgFader = function (userargs) {
 		type : 'out',  //in or out  (cross coming soon)
 		duration : 300, //accepts jQuery defined strings (eg slow, fast) or ms
 		newBg : '', //new aruments for CSS 'background:' short hand declaration
-		easing : 'linear' //linear or swing (unless you have the jQuery easing plugin installed)
+		easing : 'linear', //linear or swing (unless you have the jQuery easing plugin installed)
+		callback : '' //callback function
 	}
 	var args = jQuery.extend({}, defs, userargs);
 	if(args.type === 'in') {
@@ -28,31 +29,31 @@ jQuery.fn.bgFader = function (userargs) {
 	args = jQuery.extend({}, defs, userargs);
 	return this.each(function () {
 		var obj = jQuery(this),
-			z = obj.css("z-index"),
-			holder = $('<div></div>').css("position", "relative"),
-			underlay = $("<div></div>");
+			z = obj.css('z-index'),
+			holder = jQuery('<div></div>').css('position', 'relative'),
+			underlay = jQuery('<div></div>');
 		obj.wrap(holder);
-		if(z == "auto") { z = 0; }
+		if(z == 'auto') { z = 0; }
 		underlay.css({
-			"z-index" : z - 1,
-			"position" : "absolute",
-			"top" : 0,
-			"left" : 0,
-			"width" : obj.css("width"),
-			"height" : obj.css("height"),
+			'z-index' : z - 1,
+			'position' : 'absolute',
+			'top' : 0,
+			'left' : 0,
+			'width' : obj.css('width'),
+			'height' : obj.css('height'),
 		});
 		switch(args.type) {
 			case 'out':
 				underlay.css({
-					"background" : obj.css("background"),
-					"opacity" : obj.css("opacity")
+					'background' : obj.css('background'),
+					'opacity' : obj.css('opacity')
 				}).insertBefore(obj);
-				obj.css("background", "none");
+				obj.css('background', 'none');
 			break;
 			case 'in':
 				underlay.css({
-					"background" : args.newBg,
-					"opacity" : 0
+					'background' : args.newBg,
+					'opacity' : 0
 				}).insertBefore(obj);
 			break;
 			case 'cross':
@@ -65,12 +66,12 @@ jQuery.fn.bgFader = function (userargs) {
 		
 		function cleanup() {
 			var holder = obj.parent();
-			if(args.type === "in" && args.fadeTo < 1) {
+			if(args.type === 'in' && args.fadeTo < 1) {
 				//Do nothing. Can't clean up divs because partial opacity.
-			} else if (args.type === "out" && args.fadeTo > 0) {
+			} else if (args.type === 'out' && args.fadeTo > 0) {
 				//Again do nothing.
-			} else if (args.type === "in" || args.type === "cross") {
-				obj.css("background", args.newBg);
+			} else if (args.type === 'in' || args.type === 'cross') {
+				obj.css('background', args.newBg);
 				underlay.remove();
 				obj.insertBefore(holder);
 				holder.remove();
@@ -79,7 +80,7 @@ jQuery.fn.bgFader = function (userargs) {
 				obj.insertBefore(holder);
 				holder.remove();
 			}
-			if(typeof(args.callback === "function")) {
+			if(typeof(args.callback === 'function')) {
 				args.callback();
 			}
 		};
