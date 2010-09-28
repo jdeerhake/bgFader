@@ -1,15 +1,15 @@
 bgFader
 ================
-v0.1.0  
+v0.2.0  
 9/23/2010
 
 About
 -----
-A jQuery plugin that allows a background to fade in or out independently of its content.
+A jQuery plugin that allows a background to fade independently of its content.  Supports fading in, out, or cross fading.
 
 bgFader configuration (as well as defualts):
     $(myDiv).bgFader({
-        'type' : 'out',  //in or out  (cross coming soon)
+        'type' : 'out',  //in, out, cross
         'duration' : 300, //animation duraction - accepts jQuery defined strings (eg slow, fast) or ms
         'newBg' : '', //new aruments for CSS 'background:' short hand declaration
         'easing' : 'linear', //linear or swing (unless you have the jQuery easing plugin installed)
